@@ -20,5 +20,8 @@ public class Vehicle extends BaseEntity {
     @OneToOne
     @JoinColumn(name = "device_id")
     private Device device;
-//    private VehicleCategory category;
+
+    @OneToOne
+    @JoinColumn(name = "vehicle_category_id")
+    private VehicleCategory category;
 }
