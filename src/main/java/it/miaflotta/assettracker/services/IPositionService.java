@@ -7,4 +7,6 @@ public interface IPositionService {
     PositionDTO findById(Long id);
 
     RouteResponse findRoutes(Long id);
+
+    void handlePosition(String token, PositionDTO position);
 }

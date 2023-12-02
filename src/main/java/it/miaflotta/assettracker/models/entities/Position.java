@@ -1,7 +1,10 @@
 package it.miaflotta.assettracker.models.entities;
 
+import it.miaflotta.assettracker.enumerations.PositionStatus;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.Table;
 import lombok.Data;
 
@@ -30,7 +33,8 @@ public class Position extends BaseEntity {
     private Long vehicleId;
 
     @Column
-    private String status;
+    @Enumerated(EnumType.STRING)
+    private PositionStatus status;
 
     @Column
     private String address;

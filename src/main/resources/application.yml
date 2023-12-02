@@ -1,6 +1,8 @@
 spring:
   application:
     name: miaflotta-asset-tracker
+    api:
+      version: v1
   datasource:
     url: jdbc:postgresql://localhost:5432/postgres?serverTimezone=Europe/Rome&useSSL=false&currentSchema=miaflotta
     username: postgres
@@ -8,7 +10,6 @@ spring:
     driver-class-name: org.postgresql.Driver
   jpa:
     database-platform: org.hibernate.dialect.PostgreSQLDialect
-
 
   rabbitmq:
     host: 127.0.0.1

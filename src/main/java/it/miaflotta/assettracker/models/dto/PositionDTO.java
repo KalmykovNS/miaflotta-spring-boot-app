@@ -1,5 +1,6 @@
 package it.miaflotta.assettracker.models.dto;
 
+import it.miaflotta.assettracker.enumerations.PositionStatus;
 import lombok.Data;
 
 import java.math.BigDecimal;
@@ -17,9 +18,11 @@ public class PositionDTO {
 
     private Integer angle;
 
-    private String status;
+    private PositionStatus status;
 
     private String address;
+
+    private Boolean closePosition;
 
     private LocalDateTime createdAt;
 

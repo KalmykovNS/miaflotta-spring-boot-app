@@ -16,6 +16,7 @@ import java.util.Optional;
 @RequiredArgsConstructor
 public class PositionService implements IPositionService {
     private final PositionRepository repo;
+
     @Override
     public PositionDTO findById(Long id) {
         Optional<Position> position = repo.findById(id);
@@ -36,5 +37,10 @@ public class PositionService implements IPositionService {
     @Override
     public RouteResponse findRoutes(Long id) {
         return null;
+    }
+
+    @Override
+    public void handlePosition(String token, PositionDTO position) {
+
     }
 }
