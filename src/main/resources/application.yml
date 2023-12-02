@@ -1,0 +1,28 @@
+spring:
+  application:
+    name: miaflotta-asset-tracker
+  datasource:
+    url: jdbc:postgresql://localhost:5432/postgres?serverTimezone=Europe/Rome&useSSL=false&currentSchema=miaflotta
+    username: postgres
+    password: root
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+
+
+  rabbitmq:
+    host: 127.0.0.1
+    port: 5672
+    username: guest
+    password: guest
+
+services:
+  user-service:
+  vehicle-service:
+  position-service:
+  notification-service:
+  sms-service:
+  email-service:
+
+
+
