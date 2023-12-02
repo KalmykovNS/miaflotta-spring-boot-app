@@ -13,9 +13,9 @@ public class PositionDTO {
 
     private BigDecimal lng;
 
-    private Long speed;
+    private Integer speed;
 
-    private Long angle;
+    private Integer angle;
 
     private String status;
 

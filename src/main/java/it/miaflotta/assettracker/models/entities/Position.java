@@ -18,10 +18,16 @@ public class Position extends BaseEntity {
     private BigDecimal lng;
 
     @Column
-    private Long speed;
+    private Integer speed;
 
     @Column
-    private Long angle;
+    private Integer angle;
+
+    @Column
+    private Long deviceId;
+
+    @Column
+    private Long vehicleId;
 
     @Column
     private String status;

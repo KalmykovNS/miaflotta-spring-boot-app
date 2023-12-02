@@ -1,4 +1,38 @@
 package it.miaflotta.assettracker.models.entities;
 
-public class Poi {
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Table;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+import java.math.BigDecimal;
+
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
+@Entity
+@Table(name = "poi")
+public class Poi extends BaseEntity {
+    @Column
+    private String name;
+
+    @Column
+    private Long userId;
+
+    @Column
+    private Long poiCategoryId;
+
+    @Column
+    private BigDecimal lat;
+
+    @Column
+    private BigDecimal lng;
+
+    @Column
+    private String iconName;
+
+    @Column
+    private String description;
 }
