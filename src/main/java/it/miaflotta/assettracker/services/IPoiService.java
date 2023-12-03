@@ -5,11 +5,11 @@ import it.miaflotta.assettracker.models.dto.PoiDTO;
 import java.util.List;
 
 public interface IPoiService {
-    Long create(PoiDTO poi);
+    Long create(String token, PoiDTO poi);
 
     List<PoiDTO> findAll(String token);
 
-    Long update(Long poiId);
+    Long update(String token, Long poiId);
 
-    Long delete(Long poiId);
+    Long delete(String token, Long poiId);
 }

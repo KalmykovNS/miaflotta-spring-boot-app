@@ -8,9 +8,7 @@ import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
-import org.springframework.security.web.authentication.www.BasicAuthenticationFilter;
 import org.springframework.security.web.csrf.CsrfTokenRequestAttributeHandler;
-
 
 
 @Configuration
@@ -42,7 +40,7 @@ public class SecurityConfig {
 
 
                 .authorizeHttpRequests((requests) -> requests
-                        .anyRequest().permitAll()
+                                .anyRequest().permitAll()
 //                        .requestMatchers("/myAccount", "/myBalance", "/myLoans", "/myCards", "/user").authenticated()
 //                        .requestMatchers("/notices", "/contact", "/register").permitAll()
                 )

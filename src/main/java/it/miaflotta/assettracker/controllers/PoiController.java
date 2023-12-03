@@ -19,7 +19,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
-@RequestMapping("v1/poi")
+@RequestMapping("${api.version}/poi")
 @RequiredArgsConstructor
 public class PoiController {
     private final IPoiService service;
@@ -33,21 +33,21 @@ public class PoiController {
     @PostMapping
     public ResponseEntity<Long> create(@RequestHeader(value = HttpHeaders.AUTHORIZATION) String token,
                                        @RequestBody final PoiDTO poi) {
-        Long id = service.create(poi);
+        Long id = service.create(token, poi);
         return new ResponseEntity<>(id, HttpStatus.CREATED);
     }
 
     @PutMapping("/{id}")
     public ResponseEntity<Long> update(@RequestHeader(value = HttpHeaders.AUTHORIZATION) String token,
                                        @PathVariable(name = "id") Long poiId) {
-        Long id = service.update(poiId);
+        Long id = service.update(token, poiId);
         return ResponseEntity.ok(id);
     }
 
     @DeleteMapping("/{id}")
     public ResponseEntity<Long> delete(@RequestHeader(value = HttpHeaders.AUTHORIZATION) String token,
                                        @PathVariable(name = "id") Long poiId) {
-        Long id = service.delete(poiId);
+        Long id = service.delete(token, poiId);
         return ResponseEntity.ok(id);
     }
 }

@@ -16,7 +16,7 @@ public class PoiService implements IPoiService {
     private final PoiRepository repo;
 
     @Override
-    public Long create(PoiDTO poi) {
+    public Long create(String token, PoiDTO poi) {
         return null;
     }
 
@@ -26,12 +26,12 @@ public class PoiService implements IPoiService {
     }
 
     @Override
-    public Long update(Long poiId) {
+    public Long update(String token, Long poiId) {
         return null;
     }
 
     @Override
-    public Long delete(Long poiId) {
+    public Long delete(String token, Long poiId) {
         return null;
     }
 }
