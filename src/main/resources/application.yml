@@ -15,9 +15,6 @@ rabbitmq:
   username: guest
   password: guest
 
-api:
-  version: v1
-
 services:
   user-service:
   vehicle-service:

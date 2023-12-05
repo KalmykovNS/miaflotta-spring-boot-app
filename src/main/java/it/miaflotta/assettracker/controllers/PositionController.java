@@ -23,13 +23,15 @@ public class PositionController {
     private final IPositionService service;
 
     @GetMapping("/{id}")
-    public ResponseEntity<PositionDTO> findById(@PathVariable Long id) {
+    public ResponseEntity<PositionDTO> findById(@RequestHeader(value = HttpHeaders.AUTHORIZATION) String token,
+                                                @PathVariable Long id) {
         PositionDTO position = service.findById(id);
         return ResponseEntity.ok(position);
     }
 
     @GetMapping("/routes/vehicle/{id}")
-    public ResponseEntity<RouteResponse> findRoutes(@PathVariable Long id) {
+    public ResponseEntity<RouteResponse> findRoutes(@RequestHeader(value = HttpHeaders.AUTHORIZATION) String token,
+                                                    @PathVariable Long id) {
         RouteResponse response = service.findRoutes(id);
         return ResponseEntity.ok(response);
     }
@@ -40,9 +42,6 @@ public class PositionController {
     @PostMapping
     public void handlePosition(@RequestHeader(value = HttpHeaders.AUTHORIZATION) String token,
                                @RequestBody final PositionDTO position) {
-        if (Objects.isNull(position.getClosePosition())) {
-            position.setClosePosition(false);
-        }
         service.handlePosition(token, position);
     }
 }

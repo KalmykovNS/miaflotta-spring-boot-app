@@ -22,7 +22,7 @@ public class PositionDTO {
 
     private String address;
 
-    private Boolean closePosition;
+    private Boolean closingRoute;
 
     private LocalDateTime createdAt;
 
