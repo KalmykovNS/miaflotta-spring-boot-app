@@ -1,5 +1,6 @@
 package it.miaflotta.assettracker.controllers;
 
+import it.miaflotta.assettracker.exteptions.NotFoundException;
 import it.miaflotta.assettracker.models.dto.UserDTO;
 import it.miaflotta.assettracker.services.IUserService;
 import lombok.RequiredArgsConstructor;
@@ -36,7 +37,7 @@ public class UserController {
 
     @GetMapping("/{id}")
     public ResponseEntity<UserDTO> findById(@RequestHeader(value = HttpHeaders.AUTHORIZATION) String token,
-                                            @PathVariable Long userId) {
+                                            @PathVariable Long userId) throws NotFoundException {
         UserDTO user = service.findById(userId);
         return ResponseEntity.ok(user);
     }
