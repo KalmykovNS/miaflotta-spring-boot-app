@@ -1,7 +1,7 @@
 package it.miaflotta.assettracker.services.impl;
 
-import it.miaflotta.assettracker.models.dto.PositionDTO;
-import it.miaflotta.assettracker.models.dto.response.RouteResponse;
+import it.miaflotta.assettracker.models.dto.position.PositionDTO;
+import it.miaflotta.assettracker.models.dto.position.response.RoutesResponse;
 import it.miaflotta.assettracker.models.entities.Position;
 import it.miaflotta.assettracker.repositories.PositionRepository;
 import it.miaflotta.assettracker.services.IPositionService;
@@ -35,7 +35,7 @@ public class PositionService implements IPositionService {
     }
 
     @Override
-    public RouteResponse findRoutes(Long id) {
+    public RoutesResponse findRoutes(Long id) {
         return null;
     }
 

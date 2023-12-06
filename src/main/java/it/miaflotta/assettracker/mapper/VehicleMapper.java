@@ -1,7 +1,7 @@
 package it.miaflotta.assettracker.mapper;
 
-import it.miaflotta.assettracker.models.dto.vehicle.DeviceCategoryDTO;
-import it.miaflotta.assettracker.models.dto.vehicle.DeviceDTO;
+import it.miaflotta.assettracker.models.dto.vehicle.device.DeviceCategoryDTO;
+import it.miaflotta.assettracker.models.dto.vehicle.device.DeviceDTO;
 import it.miaflotta.assettracker.models.dto.vehicle.VehicleCategoryDTO;
 import it.miaflotta.assettracker.models.dto.vehicle.VehicleDTO;
 import it.miaflotta.assettracker.models.entities.Vehicle;

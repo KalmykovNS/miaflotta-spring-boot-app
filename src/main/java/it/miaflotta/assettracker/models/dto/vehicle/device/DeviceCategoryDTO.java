@@ -1,4 +1,4 @@
-package it.miaflotta.assettracker.models.dto.vehicle;
+package it.miaflotta.assettracker.models.dto.vehicle.device;
 
 import it.miaflotta.assettracker.enumerations.DeviceType;
 import lombok.AllArgsConstructor;

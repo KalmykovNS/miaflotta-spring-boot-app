@@ -1,12 +1,12 @@
 package it.miaflotta.assettracker.services;
 
-import it.miaflotta.assettracker.models.dto.PositionDTO;
-import it.miaflotta.assettracker.models.dto.response.RouteResponse;
+import it.miaflotta.assettracker.models.dto.position.PositionDTO;
+import it.miaflotta.assettracker.models.dto.position.response.RoutesResponse;
 
 public interface IPositionService {
     PositionDTO findById(Long id);
 
-    RouteResponse findRoutes(Long id);
+    RoutesResponse findRoutes(Long id);
 
     void handlePosition(String token, PositionDTO position);
 }

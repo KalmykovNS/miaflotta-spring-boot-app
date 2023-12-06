@@ -1,4 +1,4 @@
-package it.miaflotta.assettracker.models.dto;
+package it.miaflotta.assettracker.models.dto.position;
 
 import it.miaflotta.assettracker.enumerations.PositionStatus;
 import lombok.Data;

@@ -1,6 +1,6 @@
 package it.miaflotta.assettracker.controllers;
 
-import it.miaflotta.assettracker.models.dto.PoiDTO;
+import it.miaflotta.assettracker.models.dto.position.PoiDTO;
 import it.miaflotta.assettracker.services.IPoiService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpHeaders;

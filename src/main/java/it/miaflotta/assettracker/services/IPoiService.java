@@ -1,6 +1,6 @@
 package it.miaflotta.assettracker.services;
 
-import it.miaflotta.assettracker.models.dto.PoiDTO;
+import it.miaflotta.assettracker.models.dto.position.PoiDTO;
 
 import java.util.List;
 
