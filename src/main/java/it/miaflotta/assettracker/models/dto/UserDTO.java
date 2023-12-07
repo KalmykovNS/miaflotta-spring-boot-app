@@ -1,6 +1,5 @@
 package it.miaflotta.assettracker.models.dto;
 
-import it.miaflotta.assettracker.enumerations.MapType;
 import it.miaflotta.assettracker.enumerations.UserRole;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -20,11 +19,11 @@ public class UserDTO {
 
     private UserRole role;
 
-    private MapType mapType;
-
     private List<UserContactDTO> contacts;
 
     private List<UserDTO> guests;
 
     private List<Long> vehicles;
+
+    private MapCategoryDTO map;
 }

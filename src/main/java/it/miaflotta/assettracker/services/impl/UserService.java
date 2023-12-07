@@ -12,8 +12,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
-
-import java.util.Objects;
+import org.springframework.transaction.annotation.Transactional;
 
 @Slf4j
 @Service
@@ -41,7 +40,23 @@ public class UserService implements IUserService {
         return UserMapper.map(user);
     }
 
-    private User findEntityById(Long id) throws NotFoundException {
-       return repo.findById(id).orElseThrow(() ->new NotFoundException());
+    @Override
+    public User findEntityById(Long id) throws NotFoundException {
+        return repo.findById(id).orElseThrow(() -> new NotFoundException());
+    }
+
+    @Override
+    @Transactional
+    public Long save(User user) {
+        User entity = repo.save(user);
+        //todo keyCloakService.save(user);
+        return entity.getId();
+    }
+
+    @Override
+    @Transactional
+    public void delete(Long id) {
+        repo.deleteById(id);
+        //todo keyCloakService.delete(user);
     }
 }
