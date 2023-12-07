@@ -5,6 +5,7 @@ import it.miaflotta.assettracker.models.dto.vehicle.VehicleDTO;
 import it.miaflotta.assettracker.services.IVehicleService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -21,9 +22,10 @@ public class VehicleController {
     private final IVehicleService service;
 
     /**
-     * Returns a vehicle of by id
+     * Returns a vehicle by id
+     *
      * @param token is a bearer auth user's token
-     * @param id is a unique vehicle's identifier
+     * @param id    is a unique vehicle's identifier
      * @return VehicleDTO vehicles of a given user by id
      */
     @GetMapping("/{id}")
@@ -33,9 +35,9 @@ public class VehicleController {
         return ResponseEntity.ok(vehicle);
     }
 
-
     /**
-     * Returns a vehicle of by id
+     * Returns a user's vehicle by user token
+     *
      * @param token is a bearer auth user's token
      * @return List<VehicleDTO> list of vehicles of a given user
      */
@@ -43,5 +45,18 @@ public class VehicleController {
     public ResponseEntity<List<VehicleDTO>> findAllByUser(@RequestHeader(value = HttpHeaders.AUTHORIZATION) String token) {
         List<VehicleDTO> vehicles = service.findAllByUser(token);
         return ResponseEntity.ok(vehicles);
+    }
+
+    /**
+     * Returns a vehicle by device's serial number
+     *
+     * @param token is a bearer auth user's token
+     * @param serialNumber is a device's serial number
+     * @return VehicleDTO list of vehicles of a given user
+     */
+    @GetMapping("/device/serial-number/{serialNumber}")
+    public ResponseEntity<VehicleDTO> findVehicle(@RequestHeader(value = HttpHeaders.AUTHORIZATION) String token, @PathVariable String serialNumber) throws NotFoundException {
+        VehicleDTO vehicle = service.findByDeviceSerialNumber(token, serialNumber);
+        return new ResponseEntity<>(vehicle, HttpStatus.OK);
     }
 }

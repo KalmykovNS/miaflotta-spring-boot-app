@@ -9,4 +9,6 @@ public interface IVehicleService {
     VehicleDTO findById(String token, Long id) throws NotFoundException;
 
     List<VehicleDTO> findAllByUser(String token);
+
+    VehicleDTO findByDeviceSerialNumber(String token, String serialNumber) throws NotFoundException;
 }

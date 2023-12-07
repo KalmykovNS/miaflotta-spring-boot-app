@@ -41,4 +41,9 @@ public class VehicleService implements IVehicleService {
         List<Vehicle> vehicles = repo.findByIdIn(user.getVehicles());
         return VehicleMapper.map(vehicles);
     }
+
+    @Override
+    public VehicleDTO findByDeviceSerialNumber(String token, String serialNumber) throws NotFoundException {
+        throw new NotFoundException();
+    }
 }

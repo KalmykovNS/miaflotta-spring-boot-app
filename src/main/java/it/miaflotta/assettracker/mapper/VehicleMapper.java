@@ -32,7 +32,7 @@ public class VehicleMapper {
             category = new VehicleCategoryDTO(null, null, null);
         }
 
-        return new VehicleDTO(vehicle.getId(), vehicle.getName(), vehicle.getPlate(), device, category);
+        return new VehicleDTO(vehicle.getId(), vehicle.getName(), vehicle.getPlate(), device, category, null);
     }
 
     public static List<VehicleDTO> map(List<Vehicle> vehicles) {

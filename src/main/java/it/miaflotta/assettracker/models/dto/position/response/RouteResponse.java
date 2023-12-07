@@ -13,7 +13,7 @@ import java.util.List;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class RoutesResponse {
+public class RouteResponse {
     private VehicleDTO vehicle;
     private LocalDate date;
     private List<RouteDTO> routes;

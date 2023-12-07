@@ -1,12 +1,20 @@
 package it.miaflotta.assettracker.services;
 
 import it.miaflotta.assettracker.models.dto.position.PositionDTO;
-import it.miaflotta.assettracker.models.dto.position.response.RoutesResponse;
+import it.miaflotta.assettracker.models.dto.position.response.RouteCalendarResponse;
+import it.miaflotta.assettracker.models.dto.position.response.RouteResponse;
+
+import java.time.LocalDate;
+import java.util.List;
 
 public interface IPositionService {
     PositionDTO findById(Long id);
 
-    RoutesResponse findRoutes(Long id);
+    PositionDTO findLast(Long id);
+
+    RouteResponse findRoutes(Long id, LocalDate date);
 
     void handlePosition(String token, PositionDTO position);
+
+    List<RouteCalendarResponse> findRoutesCalendars(Long id);
 }
