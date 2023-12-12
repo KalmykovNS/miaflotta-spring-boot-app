@@ -17,9 +17,6 @@ import java.util.List;
 public class UserDTO {
     private Long id;
 
-//    @Email(message = "Email should be valid")
-//private String email;
-
     @NotNull(message = "Name cannot be null")
     @Size(min = 1, max = 10, message
             = "Name must be between 1 and 10 characters")
