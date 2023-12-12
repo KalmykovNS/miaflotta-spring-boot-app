@@ -2,7 +2,7 @@ package it.miaflotta.assettracker.services.impl;
 
 import it.miaflotta.assettracker.exteptions.NotFoundException;
 import it.miaflotta.assettracker.mapper.VehicleMapper;
-import it.miaflotta.assettracker.models.dto.UserDTO;
+import it.miaflotta.assettracker.models.dto.user.request.UserDTO;
 import it.miaflotta.assettracker.models.dto.vehicle.VehicleDTO;
 import it.miaflotta.assettracker.models.entities.Vehicle;
 import it.miaflotta.assettracker.repositories.VehicleRepository;

@@ -5,7 +5,6 @@ import it.miaflotta.assettracker.mapper.UserMapper;
 import it.miaflotta.assettracker.models.dto.user.request.CreateOrUpdateUserRequest;
 import it.miaflotta.assettracker.models.entities.MapCategory;
 import it.miaflotta.assettracker.models.entities.User;
-import it.miaflotta.assettracker.models.entities.UserContact;
 import it.miaflotta.assettracker.services.IAdminUserService;
 import it.miaflotta.assettracker.services.IMapService;
 import it.miaflotta.assettracker.services.IUserService;
@@ -13,8 +12,6 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
-import java.util.LinkedList;
-import java.util.List;
 import java.util.Objects;
 
 @Slf4j
@@ -27,7 +24,7 @@ public class AdminUserService implements IAdminUserService {
     @Override
     public Long create(String token, CreateOrUpdateUserRequest request) throws NotFoundException {
         MapCategory map = mapService.findById(request.getMapCategoryId());
-        User user = UserMapper.buildEntity(request.getName(), request.getSurname(), request.getRole(), new LinkedList<>(), map);
+        User user = UserMapper.map(request.getName(), request.getSurname(), request.getRole(), null, map);
         return userService.save(user);
     }
 
@@ -38,7 +35,7 @@ public class AdminUserService implements IAdminUserService {
         if (Objects.nonNull(request.getMapCategoryId())) {
             map = mapService.findById(request.getMapCategoryId());
         }
-        UserMapper.buildEntity(user, request.getName(), request.getSurname(), request.getRole(), null, map);
+        UserMapper.map(user, request.getName(), request.getSurname(), request.getRole(), null, map);
         return userService.save(user);
     }
 

@@ -19,7 +19,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
-@RequestMapping("v1/poi")
+@RequestMapping("api/v1/positions/poi")
 @RequiredArgsConstructor
 public class PoiController {
     private final IPoiService service;

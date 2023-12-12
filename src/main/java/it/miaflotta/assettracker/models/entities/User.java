@@ -24,7 +24,7 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "user")
+@Table(name="user", schema="miaflotta")
 public class User extends BaseEntity {
     @Column
     private String uuid;

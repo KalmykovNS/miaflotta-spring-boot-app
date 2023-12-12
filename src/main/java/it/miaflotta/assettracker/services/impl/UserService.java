@@ -2,7 +2,7 @@ package it.miaflotta.assettracker.services.impl;
 
 import it.miaflotta.assettracker.exteptions.NotFoundException;
 import it.miaflotta.assettracker.mapper.UserMapper;
-import it.miaflotta.assettracker.models.dto.UserDTO;
+import it.miaflotta.assettracker.models.dto.user.request.UserDTO;
 import it.miaflotta.assettracker.models.entities.User;
 import it.miaflotta.assettracker.repositories.UserRepository;
 import it.miaflotta.assettracker.services.IKeyCloakService;

@@ -1,7 +1,7 @@
 package it.miaflotta.assettracker.mapper;
 
 import it.miaflotta.assettracker.enumerations.UserRole;
-import it.miaflotta.assettracker.models.dto.UserDTO;
+import it.miaflotta.assettracker.models.dto.user.request.UserDTO;
 import it.miaflotta.assettracker.models.entities.MapCategory;
 import it.miaflotta.assettracker.models.entities.User;
 import it.miaflotta.assettracker.models.entities.UserContact;
@@ -15,11 +15,16 @@ public class UserMapper {
         return null;
     }
 
-    public static User buildEntity(String name, String surname, UserRole role, List<UserContact> contacts, MapCategory map) {
-        return new User(null, name, surname, role, contacts, null, null, map);
+    public static User map(String name, String surname, UserRole role, List<UserContact> contacts, MapCategory map) {
+        User user =  new User();
+        user.setName(name);
+        user.setSurname(surname);
+        user.setRole(role);
+        user.setMap(map);
+        return user;
     }
 
-    public static void buildEntity(User user, String name, String surname, UserRole role, List<UserContact> contacts, MapCategory map) {
+    public static void map(User user, String name, String surname, UserRole role, List<UserContact> contacts, MapCategory map) {
         if (Objects.nonNull(name)) {
             user.setName(name);
         }

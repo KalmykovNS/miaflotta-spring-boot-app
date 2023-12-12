@@ -1,12 +1,18 @@
 package it.miaflotta.assettracker.controllers.admin;
 
+import it.miaflotta.assettracker.exteptions.InvalidInputException;
 import it.miaflotta.assettracker.exteptions.NotFoundException;
 import it.miaflotta.assettracker.models.dto.user.request.CreateOrUpdateUserRequest;
 import it.miaflotta.assettracker.services.IAdminUserService;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
+import org.springframework.context.i18n.LocaleContextHolder;
+import org.springframework.context.support.ResourceBundleMessageSource;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -16,24 +22,34 @@ import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.LinkedList;
+import java.util.List;
+
 @RestController
 @RequestMapping("api/v1/admin/users")
 @RequiredArgsConstructor
 public class AdminUserController {
     private final IAdminUserService service;
+    private final ResourceBundleMessageSource messageSource;
 
     @PostMapping
     public ResponseEntity<Long> create(@RequestHeader(value = HttpHeaders.AUTHORIZATION) String token,
-                                       @RequestBody final CreateOrUpdateUserRequest request) throws NotFoundException {
+                                       @RequestBody final @Valid CreateOrUpdateUserRequest request, BindingResult bindingResult) throws NotFoundException, InvalidInputException {
+        if (bindingResult.hasErrors()) {
+            List<String> errorMessages = new LinkedList<>();
+            for (FieldError error : bindingResult.getFieldErrors()) {
+                errorMessages.add(messageSource.getMessage(error, LocaleContextHolder.getLocale()));
+            }
+            throw new InvalidInputException(errorMessages, 400);
+        }
         Long id = service.create(token, request);
-        //todo
         return new ResponseEntity<>(id, HttpStatus.CREATED);
     }
 
     @PutMapping("/{userId}")
     public ResponseEntity<Long> update(@RequestHeader(value = HttpHeaders.AUTHORIZATION) String token,
                                        @PathVariable Long userId,
-                                       @RequestBody final CreateOrUpdateUserRequest request) throws NotFoundException {
+                                       @RequestBody final @Valid CreateOrUpdateUserRequest request) throws NotFoundException {
         Long id = service.update(token, userId, request);
         return ResponseEntity.ok(id);
     }
