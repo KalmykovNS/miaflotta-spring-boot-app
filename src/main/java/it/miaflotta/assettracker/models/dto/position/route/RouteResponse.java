@@ -1,4 +1,4 @@
-package it.miaflotta.assettracker.models.dto.position.response;
+package it.miaflotta.assettracker.models.dto.position.route;
 
 import it.miaflotta.assettracker.models.dto.position.route.RouteDTO;
 import it.miaflotta.assettracker.models.dto.position.route.RouteStatisticDTO;

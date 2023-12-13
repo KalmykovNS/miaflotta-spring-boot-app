@@ -2,8 +2,9 @@ package it.miaflotta.assettracker.services.impl;
 
 import it.miaflotta.assettracker.exteptions.NotFoundException;
 import it.miaflotta.assettracker.mapper.VehicleMapper;
-import it.miaflotta.assettracker.models.dto.user.request.UserDTO;
+import it.miaflotta.assettracker.models.dto.user.UserDTO;
 import it.miaflotta.assettracker.models.dto.vehicle.VehicleDTO;
+import it.miaflotta.assettracker.models.entities.BaseEntity;
 import it.miaflotta.assettracker.models.entities.Vehicle;
 import it.miaflotta.assettracker.repositories.VehicleRepository;
 import it.miaflotta.assettracker.services.IUserService;
@@ -14,6 +15,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.LinkedList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Slf4j
 @Service
@@ -38,8 +40,21 @@ public class VehicleService implements IVehicleService {
         if (user.getVehicles().isEmpty()) {
             return new LinkedList<>();
         }
+
         List<Vehicle> vehicles = repo.findByIdIn(user.getVehicles());
         return VehicleMapper.map(vehicles);
+    }
+
+    @Override
+    public List<Long> findAllByUserId(Long userId) throws NotFoundException {
+        UserDTO user = userService.findById(userId);
+        if (user.getVehicles().isEmpty()) {
+            return new LinkedList<>();
+        }
+
+        return repo.findByIdIn(user.getVehicles()).stream()
+                .map(BaseEntity::getId)
+                .collect(Collectors.toList());
     }
 
     @Override

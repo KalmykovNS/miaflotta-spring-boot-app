@@ -1,8 +1,8 @@
 package it.miaflotta.assettracker.services;
 
 import it.miaflotta.assettracker.models.dto.position.PositionDTO;
-import it.miaflotta.assettracker.models.dto.position.response.RouteCalendarResponse;
-import it.miaflotta.assettracker.models.dto.position.response.RouteResponse;
+import it.miaflotta.assettracker.models.dto.position.route.RouteCalendarResponse;
+import it.miaflotta.assettracker.models.dto.position.route.RouteResponse;
 
 import java.time.LocalDate;
 import java.util.List;

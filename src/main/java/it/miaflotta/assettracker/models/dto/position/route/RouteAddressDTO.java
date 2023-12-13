@@ -8,6 +8,6 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class RouteAddressDTO {
-    String startAddress;
-    String stopAddress;
+    String from;
+    String to;
 }

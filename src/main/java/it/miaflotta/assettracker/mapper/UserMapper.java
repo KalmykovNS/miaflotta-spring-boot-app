@@ -1,7 +1,7 @@
 package it.miaflotta.assettracker.mapper;
 
 import it.miaflotta.assettracker.enumerations.UserRole;
-import it.miaflotta.assettracker.models.dto.user.request.UserDTO;
+import it.miaflotta.assettracker.models.dto.user.UserDTO;
 import it.miaflotta.assettracker.models.entities.MapCategory;
 import it.miaflotta.assettracker.models.entities.User;
 import it.miaflotta.assettracker.models.entities.UserContact;

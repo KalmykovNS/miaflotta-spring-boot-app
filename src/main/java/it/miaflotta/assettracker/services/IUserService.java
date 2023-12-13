@@ -1,7 +1,7 @@
 package it.miaflotta.assettracker.services;
 
 import it.miaflotta.assettracker.exteptions.NotFoundException;
-import it.miaflotta.assettracker.models.dto.user.request.UserDTO;
+import it.miaflotta.assettracker.models.dto.user.UserDTO;
 import it.miaflotta.assettracker.models.entities.User;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;

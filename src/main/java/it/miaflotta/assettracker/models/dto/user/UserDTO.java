@@ -1,4 +1,4 @@
-package it.miaflotta.assettracker.models.dto.user.request;
+package it.miaflotta.assettracker.models.dto.user;
 
 import it.miaflotta.assettracker.enumerations.UserRole;
 import it.miaflotta.assettracker.models.dto.MapCategoryDTO;

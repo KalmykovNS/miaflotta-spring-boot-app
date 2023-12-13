@@ -1,8 +1,8 @@
 package it.miaflotta.assettracker.services.impl;
 
 import it.miaflotta.assettracker.models.dto.position.PositionDTO;
-import it.miaflotta.assettracker.models.dto.position.response.RouteCalendarResponse;
-import it.miaflotta.assettracker.models.dto.position.response.RouteResponse;
+import it.miaflotta.assettracker.models.dto.position.route.RouteCalendarResponse;
+import it.miaflotta.assettracker.models.dto.position.route.RouteResponse;
 import it.miaflotta.assettracker.models.entities.Position;
 import it.miaflotta.assettracker.repositories.PositionRepository;
 import it.miaflotta.assettracker.services.IPositionService;

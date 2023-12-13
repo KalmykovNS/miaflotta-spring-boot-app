@@ -1,7 +1,7 @@
 package it.miaflotta.assettracker.controllers;
 
 import it.miaflotta.assettracker.models.dto.position.PositionDTO;
-import it.miaflotta.assettracker.models.dto.position.response.RouteCalendarResponse;
+import it.miaflotta.assettracker.models.dto.position.route.RouteCalendarResponse;
 import it.miaflotta.assettracker.services.IPositionService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.format.annotation.DateTimeFormat;
@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-import it.miaflotta.assettracker.models.dto.position.response.RouteResponse;
+import it.miaflotta.assettracker.models.dto.position.route.RouteResponse;
 
 import java.time.LocalDate;
 import java.util.List;

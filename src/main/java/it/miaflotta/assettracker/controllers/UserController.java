@@ -1,7 +1,7 @@
 package it.miaflotta.assettracker.controllers;
 
 import it.miaflotta.assettracker.exteptions.NotFoundException;
-import it.miaflotta.assettracker.models.dto.user.request.UserDTO;
+import it.miaflotta.assettracker.models.dto.user.UserDTO;
 import it.miaflotta.assettracker.services.IUserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
