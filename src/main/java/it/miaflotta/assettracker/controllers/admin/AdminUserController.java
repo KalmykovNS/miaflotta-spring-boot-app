@@ -65,7 +65,7 @@ public class AdminUserController {
 
     @DeleteMapping("/{id}")
     public ResponseEntity<?> delete(@RequestHeader(value = HttpHeaders.AUTHORIZATION) String token,
-                                    @PathVariable Long id) {
+                                    @PathVariable Long id) throws NotFoundException {
         service.delete(token, id);
         return ResponseEntity.ok().build();
     }

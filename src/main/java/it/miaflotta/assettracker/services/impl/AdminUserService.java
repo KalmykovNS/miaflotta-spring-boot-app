@@ -1,5 +1,6 @@
 package it.miaflotta.assettracker.services.impl;
 
+import it.miaflotta.assettracker.annotations.MethodExecutionTime;
 import it.miaflotta.assettracker.exteptions.NotFoundException;
 import it.miaflotta.assettracker.mapper.UserMapper;
 import it.miaflotta.assettracker.models.dto.user.CreateOrUpdateUserContactRequest;
@@ -26,6 +27,7 @@ public class AdminUserService implements IAdminUserService {
     private final IUserService userService;
 
     @Override
+    @MethodExecutionTime
     public Long create(String token, CreateOrUpdateUserRequest request) throws NotFoundException {
         MapCategory map = mapService.findById(request.getMapCategoryId());
         User user = UserMapper.map(request.getName(), request.getSurname(), request.getRole(), null, map);
@@ -33,18 +35,17 @@ public class AdminUserService implements IAdminUserService {
     }
 
     @Override
+    @MethodExecutionTime
     public Long update(String token, Long id, CreateOrUpdateUserRequest request) throws NotFoundException {
         User user = userService.findEntityById(id);
-        MapCategory map = null;
-        if (Objects.nonNull(request.getMapCategoryId())) {
-            map = mapService.findById(request.getMapCategoryId());
-        }
+        MapCategory map = (Objects.nonNull(request.getMapCategoryId())) ? mapService.findById(request.getMapCategoryId()) : null;
         UserMapper.map(user, request.getName(), request.getSurname(), request.getRole(), null, map);
         return userService.save(user);
     }
 
     @Override
-    public void delete(String token, Long id) {
+    @MethodExecutionTime
+    public void delete(String token, Long id) throws NotFoundException {
         userService.delete(id);
     }
 

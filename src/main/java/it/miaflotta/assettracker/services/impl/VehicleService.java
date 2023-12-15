@@ -11,16 +11,19 @@ import it.miaflotta.assettracker.services.IUserService;
 import it.miaflotta.assettracker.services.IVehicleService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.context.MessageSource;
 import org.springframework.stereotype.Service;
 
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Locale;
 import java.util.stream.Collectors;
 
 @Slf4j
 @Service
 @RequiredArgsConstructor
 public class VehicleService implements IVehicleService {
+    private final MessageSource messageSource;
     private final IUserService userService;
     private final VehicleRepository repo;
 
@@ -28,9 +31,9 @@ public class VehicleService implements IVehicleService {
     public VehicleDTO findById(String token, Long id) throws NotFoundException {
         UserDTO user = userService.findByToken(token);
         if (user.getVehicles().isEmpty() || !user.getVehicles().contains(id)) {
-            throw new NotFoundException();
+            throw new NotFoundException(messageSource.getMessage("exception.vehicle.notfound", null, Locale.ITALIAN));
         }
-        Vehicle vehicle = repo.findById(id).orElseThrow(NotFoundException::new);
+        Vehicle vehicle = repo.findById(id).orElseThrow(() -> new NotFoundException(messageSource.getMessage("exception.vehicle.notfound", null, Locale.ITALIAN)));
         return VehicleMapper.map(vehicle);
     }
 
@@ -59,6 +62,10 @@ public class VehicleService implements IVehicleService {
 
     @Override
     public VehicleDTO findByDeviceSerialNumber(String token, String serialNumber) throws NotFoundException {
-        throw new NotFoundException();
+        Vehicle vehicle = repo.findBySerialNumber(serialNumber)
+                .orElseThrow(() -> new NotFoundException(messageSource.getMessage("exception.vehicle.notfound", null, Locale.ITALIAN)));
+        return VehicleMapper.map(vehicle);
     }
+
+
 }

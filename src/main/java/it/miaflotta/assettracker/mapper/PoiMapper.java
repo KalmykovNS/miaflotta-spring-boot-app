@@ -3,8 +3,8 @@ package it.miaflotta.assettracker.mapper;
 import it.miaflotta.assettracker.models.dto.position.poi.CreateOrUpdatePoiRequest;
 import it.miaflotta.assettracker.models.dto.position.poi.PoiCategoryDTO;
 import it.miaflotta.assettracker.models.dto.position.poi.PoiDTO;
-import it.miaflotta.assettracker.models.entities.Poi;
-import it.miaflotta.assettracker.models.entities.PoiCategory;
+import it.miaflotta.assettracker.models.entities.position.Poi;
+import it.miaflotta.assettracker.models.entities.position.PoiCategory;
 import org.springframework.util.CollectionUtils;
 
 import java.util.LinkedList;

@@ -1,6 +1,7 @@
-package it.miaflotta.assettracker.models.entities;
+package it.miaflotta.assettracker.models.entities.position;
 
 import it.miaflotta.assettracker.enumerations.PositionStatus;
+import it.miaflotta.assettracker.models.entities.BaseEntity;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;

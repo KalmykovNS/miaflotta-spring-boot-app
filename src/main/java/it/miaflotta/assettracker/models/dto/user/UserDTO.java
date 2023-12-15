@@ -36,4 +36,6 @@ public class UserDTO {
     private List<Long> vehicles;
 
     private MapCategoryDTO map;
+
+    private Boolean enabled;
 }

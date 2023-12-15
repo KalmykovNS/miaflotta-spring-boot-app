@@ -1,7 +1,9 @@
 package it.miaflotta.assettracker.controllers;
 
+import it.miaflotta.assettracker.exteptions.NotFoundException;
 import it.miaflotta.assettracker.models.dto.position.PositionDTO;
 import it.miaflotta.assettracker.models.dto.position.route.RouteCalendarResponse;
+import it.miaflotta.assettracker.models.dto.position.route.RouteResponse;
 import it.miaflotta.assettracker.services.IPositionService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.format.annotation.DateTimeFormat;
@@ -14,7 +16,6 @@ import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-import it.miaflotta.assettracker.models.dto.position.route.RouteResponse;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -27,7 +28,7 @@ public class PositionController {
 
     @GetMapping("/{id}")
     public ResponseEntity<PositionDTO> findById(@RequestHeader(value = HttpHeaders.AUTHORIZATION) String token,
-                                                @PathVariable Long id) {
+                                                @PathVariable Long id) throws NotFoundException {
         PositionDTO position = service.findById(id);
         return ResponseEntity.ok(position);
     }
@@ -35,15 +36,22 @@ public class PositionController {
     @GetMapping("/vehicle/{id}/last")
     public ResponseEntity<PositionDTO> findLast(@RequestHeader(value = HttpHeaders.AUTHORIZATION) String token,
                                                 @PathVariable Long id) {
-        PositionDTO position = service.findLast(id);
+        PositionDTO position = service.findLastByVehicleId(id);
         return ResponseEntity.ok(position);
     }
 
-    @GetMapping("/vehicle/{id}/routes")
+    @GetMapping("/vehicles/last")
+    public ResponseEntity<List<PositionDTO>> findLastPositions(@RequestHeader(value = HttpHeaders.AUTHORIZATION) String token,
+                                                               @RequestParam("vehicleIds") List<Long> vehicleIds) {
+        List<PositionDTO> lastPositions = service.findLastPositions(token, vehicleIds);
+        return ResponseEntity.ok(lastPositions);
+    }
+
+    @GetMapping("/vehicle/{vehicleId}/routes")
     public ResponseEntity<RouteResponse> findRoutes(@RequestHeader(value = HttpHeaders.AUTHORIZATION) String token,
-                                                    @PathVariable Long id,
-                                                    @RequestParam(value = "date", required = false) @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate date) {
-        RouteResponse response = service.findRoutes(id, date);
+                                                    @PathVariable Long vehicleId,
+                                                    @RequestParam(value = "date", required = false) @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate date) throws NotFoundException {
+        RouteResponse response = service.findRoutes(token, vehicleId, date);
         return ResponseEntity.ok(response);
     }
 

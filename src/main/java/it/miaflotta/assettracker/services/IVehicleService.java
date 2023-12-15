@@ -2,6 +2,7 @@ package it.miaflotta.assettracker.services;
 
 import it.miaflotta.assettracker.exteptions.NotFoundException;
 import it.miaflotta.assettracker.models.dto.vehicle.VehicleDTO;
+import it.miaflotta.assettracker.models.entities.Vehicle;
 
 import java.util.List;
 
@@ -13,4 +14,5 @@ public interface IVehicleService {
     List<Long> findAllByUserId(Long userId) throws NotFoundException;
 
     VehicleDTO findByDeviceSerialNumber(String token, String serialNumber) throws NotFoundException;
+
 }

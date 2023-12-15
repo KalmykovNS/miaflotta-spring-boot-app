@@ -12,7 +12,7 @@ public interface IAdminUserService {
 
     Long update(String token, Long userId, CreateOrUpdateUserRequest request) throws NotFoundException;
 
-    void delete(String token, Long id);
+    void delete(String token, Long id) throws NotFoundException;
 
     Long createContact(String token, CreateOrUpdateUserContactRequest request);
 

@@ -1,4 +1,4 @@
-package it.miaflotta.assettracker.models.entities;
+package it.miaflotta.assettracker.models.entities.position;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;

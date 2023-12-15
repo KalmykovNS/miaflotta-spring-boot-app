@@ -10,5 +10,5 @@ import java.math.BigDecimal;
 @NoArgsConstructor
 @AllArgsConstructor
 public class DrivingDistanceDTO {
-    private BigDecimal km;
+    private Double km;
 }

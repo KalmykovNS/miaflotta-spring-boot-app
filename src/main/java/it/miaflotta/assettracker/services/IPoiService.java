@@ -3,8 +3,8 @@ package it.miaflotta.assettracker.services;
 import it.miaflotta.assettracker.exteptions.NotFoundException;
 import it.miaflotta.assettracker.models.dto.position.poi.PoiDTO;
 import it.miaflotta.assettracker.models.dto.position.poi.CreateOrUpdatePoiRequest;
-import it.miaflotta.assettracker.models.entities.Poi;
-import it.miaflotta.assettracker.models.entities.PoiCategory;
+import it.miaflotta.assettracker.models.entities.position.Poi;
+import it.miaflotta.assettracker.models.entities.position.PoiCategory;
 
 import java.util.List;
 

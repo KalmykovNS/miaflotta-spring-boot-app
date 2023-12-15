@@ -17,6 +17,8 @@ public class RouteDTO {
     LocalTime dateFrom;
     LocalTime dateTo;
     RouteAddressDTO address;
+    PositionDTO positionFrom;
+    PositionDTO positionTo;
     List<PositionDTO> positions;
     RouteStatisticDTO statistic;
 }
