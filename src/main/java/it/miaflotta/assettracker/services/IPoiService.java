@@ -1,18 +1,23 @@
 package it.miaflotta.assettracker.services;
 
-import it.miaflotta.assettracker.models.dto.position.PoiDTO;
+import it.miaflotta.assettracker.exteptions.NotFoundException;
+import it.miaflotta.assettracker.models.dto.position.poi.PoiDTO;
+import it.miaflotta.assettracker.models.dto.position.poi.CreateOrUpdatePoiRequest;
 import it.miaflotta.assettracker.models.entities.Poi;
+import it.miaflotta.assettracker.models.entities.PoiCategory;
 
 import java.util.List;
 
 public interface IPoiService {
-    Long create(String token, PoiDTO poi);
+    Long create(String token, CreateOrUpdatePoiRequest req) throws NotFoundException;
+
+    PoiCategory findCategoryById(Long poiCategoryId) throws NotFoundException;
 
     List<PoiDTO> findAll(String token);
 
-    Long update(String token, Long poiId);
+    Long update(String token, Long id, CreateOrUpdatePoiRequest req) throws NotFoundException;
 
-    Long delete(String token, Long poiId);
+    void delete(String token, Long id) throws NotFoundException;
 
-    Long save(Poi entity);
+    Poi findEntityById(Long id) throws NotFoundException;
 }

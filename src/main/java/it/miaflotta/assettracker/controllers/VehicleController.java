@@ -17,7 +17,7 @@ import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/api/v1/vehicles")
+@RequestMapping("api/v1/vehicles")
 public class VehicleController {
     private final IVehicleService service;
 
@@ -48,8 +48,8 @@ public class VehicleController {
     }
 
     /**
-     * Returns a vehicle by device's serial number
-     *
+     * Method for retrieving a vihicle dto object using its device's serial number
+     * ones user is authenticated by token
      * @param token is a bearer auth user's token
      * @param serialNumber is a device's serial number
      * @return VehicleDTO list of vehicles of a given user

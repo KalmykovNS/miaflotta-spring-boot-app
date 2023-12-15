@@ -25,7 +25,7 @@ import java.util.List;
 @RestController
 @RequestMapping("api/v1/admin/positions")
 @RequiredArgsConstructor
-public class PositionController {
+public class AdminPositionController {
     private final IAdminPositionService service;
 
     @PostMapping("/handle")

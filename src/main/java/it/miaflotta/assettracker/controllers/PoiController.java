@@ -1,11 +1,16 @@
 package it.miaflotta.assettracker.controllers;
 
-import it.miaflotta.assettracker.models.dto.position.PoiDTO;
+import it.miaflotta.assettracker.annotations.HandleBindingResult;
+import it.miaflotta.assettracker.exteptions.NotFoundException;
+import it.miaflotta.assettracker.models.dto.position.poi.CreateOrUpdatePoiRequest;
+import it.miaflotta.assettracker.models.dto.position.poi.PoiDTO;
 import it.miaflotta.assettracker.services.IPoiService;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -32,22 +37,23 @@ public class PoiController {
 
     @PostMapping
     public ResponseEntity<Long> create(@RequestHeader(value = HttpHeaders.AUTHORIZATION) String token,
-                                       @RequestBody final PoiDTO poi) {
-        Long id = service.create(token, poi);
+                                       @RequestBody final @Valid CreateOrUpdatePoiRequest request,
+                                       @HandleBindingResult BindingResult bindingResult) throws NotFoundException {
+        Long id = service.create(token, request);
         return new ResponseEntity<>(id, HttpStatus.CREATED);
     }
 
     @PutMapping("/{id}")
     public ResponseEntity<Long> update(@RequestHeader(value = HttpHeaders.AUTHORIZATION) String token,
-                                       @PathVariable(name = "id") Long poiId) {
-        Long id = service.update(token, poiId);
+                                       @PathVariable(name = "id") Long poiId, @RequestBody final CreateOrUpdatePoiRequest request) throws NotFoundException {
+        Long id = service.update(token, poiId, request);
         return ResponseEntity.ok(id);
     }
 
     @DeleteMapping("/{id}")
     public ResponseEntity<Long> delete(@RequestHeader(value = HttpHeaders.AUTHORIZATION) String token,
-                                       @PathVariable(name = "id") Long poiId) {
-        Long id = service.delete(token, poiId);
-        return ResponseEntity.ok(id);
+                                       @PathVariable(name = "id") Long poiId) throws NotFoundException {
+        service.delete(token, poiId);
+        return ResponseEntity.ok().build();
     }
 }

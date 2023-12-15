@@ -20,7 +20,7 @@ import java.time.LocalDate;
 import java.util.List;
 
 @RestController
-@RequestMapping("v1/positions")
+@RequestMapping("api/v1/positions")
 @RequiredArgsConstructor
 public class PositionController {
     private final IPositionService service;

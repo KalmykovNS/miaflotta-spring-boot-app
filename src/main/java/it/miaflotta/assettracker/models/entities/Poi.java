@@ -2,6 +2,8 @@ package it.miaflotta.assettracker.models.entities;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -21,8 +23,9 @@ public class Poi extends BaseEntity {
     @Column
     private Long userId;
 
-    @Column
-    private Long poiCategoryId;
+    @OneToOne
+    @JoinColumn(name = "poi_category_id")
+    private PoiCategory category;
 
     @Column
     private BigDecimal lat;
